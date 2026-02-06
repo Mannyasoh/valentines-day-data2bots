@@ -2,8 +2,9 @@ services:
   - type: web
     name: ulla-valentine
     env: node
-    buildCommand: npm install && npm run build && cd server && npm install
-    startCommand: cd server && npm start
+    plan: free
+    buildCommand: npm install && npm run build && cd server && npm install && cp -r ../build ./build
+    startCommand: cd server && node index.js
     envVars:
       - key: SENDGRID_API_KEY
         sync: false
